@@ -1,0 +1,21 @@
+#site-content {
+  .sm-element {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: transform 0.5s ease 0.5s, opacity 0.5s ease 0.5s;
+
+    &.sm-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  $start: 0.5s;
+  $base: 0.2s;
+
+  @for $i from 1 through 100 {
+    .sm-element--d#{$i} {
+      transition: transform 0.5s ease #{$start + $base * $i}, opacity 0.5s ease #{$start + $base * $i};
+    }
+  }
+}

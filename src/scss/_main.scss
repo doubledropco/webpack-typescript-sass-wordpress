@@ -1,0 +1,9 @@
+[data-src],
+[data-bg] {
+  opacity: 0;
+  transition: opacity 1s;
+
+  &.loaded {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,109 @@
+
+.footer {
+  width: 100%;
+  padding-top: 132px;
+  padding-bottom: 132px;
+  background: $dark-grey;
+  color: $white;
+
+  &--has-widget-5 {
+    padding-bottom: 66px;
+  }
+
+  &__widget-1,
+  &__widget-2,
+  &__widget-3,
+  &__widget-4 {
+    ul,
+    li {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .widgettitle {
+    font-family: $font-primary;
+    font-size: 22px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: $white;
+    display: block;
+    width: 100%;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    margin-top: 0;
+
+    @include md {
+      border-bottom: 1px solid $white;
+      margin-bottom: 20px;
+      width: calc(100% - 20px);
+    }
+  }
+
+  &__logo {
+    width: 100%;
+    max-width: 177px !important;
+  }
+
+  &__widget-3 {
+    .menu {
+      @include md {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
+
+    .menu-item {
+      @include md {
+        width: 50%;
+      }
+    }
+  }
+
+  .menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .menu-item {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    padding-bottom: 20px;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: normal;
+
+    a {
+      text-decoration: none;
+      transition: 0.2s color;
+
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+
+  &__widget-5 {
+    font-size: 12px;
+    line-height: 16px;
+    color: $white;
+    margin-top: 50px;
+
+    p {
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    a {
+      color: $white;
+    }
+  }
+}

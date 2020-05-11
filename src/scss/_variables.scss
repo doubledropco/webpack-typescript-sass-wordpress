@@ -1,0 +1,80 @@
+$white: #fff;
+$black: #000;
+
+$light-blue: #0073aa;
+$dark-grey: #1c1d21;
+
+$primary: $light-blue;
+$secondary: $dark-grey;
+
+$headings-font-family: 'Helvetica Nueue', 'Arial', sans-serif;
+$font-family-sans-serif: 'Helvetica Nueue', 'Arial', sans-serif;
+
+$font-primary: $headings-font-family;
+$font-secondary: $font-family-sans-serif;
+
+$header-height: 100px;
+$header-height-scrolled: 80px;
+
+$page-inner-width: 1200px;
+$page-gutter: 15px;
+
+$z-header: 1000;
+$z-mobile-menu: 2000;
+$z-mobile-menu-toggle: 3000;
+
+$screen-xs-min: 425px;
+$screen-sm-min: 576px;
+$screen-md-min: 768px;
+$screen-lg-min: 992px;
+$screen-xl-min: 1440px;
+
+$timing: cubic-bezier(0.12, 0.845, 0.305, 1);
+
+$hamburger-padding-x: 10px;
+$hamburger-padding-y: 10px;
+$hamburger-layer-width : 30px !default;
+$hamburger-layer-height : 3px !default;
+$hamburger-layer-spacing : 6px !default;
+
+$fa-font-path:        "../node_modules/@fortawesome/fontawesome-pro/webfonts";
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: $screen-sm-min,
+  md: $screen-md-min,
+  lg: $screen-lg-min,
+  xl: $screen-xl-min
+);
+
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: ($spacer * 0.25),
+  2: ($spacer * 0.5),
+  3: $spacer,
+  4: ($spacer * 1.5),
+  5: ($spacer * 3),
+  6: ($spacer * 4.5),
+  7: ($spacer * 6),
+  8: ($spacer * 7.5),
+  9: ($spacer * 9),
+  10: ($spacer * 10.5)
+);
+
+$headings-margin-bottom: 1.2rem;
+$paragraph-margin-bottom: 1.5rem;
+
+$input-font-family: $font-primary;
+$component-active-bg: $primary;
+
+$input-padding-y-lg: 0.5rem;
+$input-padding-x-lg: 0.6rem;
+
+$btn-padding-y: 14px;
+$btn-padding-x: 30px;
+
+$btn-padding-y-sm: 12px;
+$btn-padding-x-sm: 24px;
+
+$button-border-width: 2px;

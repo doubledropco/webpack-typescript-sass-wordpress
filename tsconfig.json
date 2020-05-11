@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "module": "es6",
+        "target": "es5",
+        "jsx": "react",
+        "allowJs": true,
+        "allowSyntheticDefaultImports": true,
+        "moduleResolution": "node",
+        "typeRoots": [
+            "./node_modules/@types",
+            "./src/types"
+        ],
+        "baseUrl": "./src",
+        "paths": {
+            "@blocks/*": ["template-parts/blocks/*"],
+        }
+    }
+}

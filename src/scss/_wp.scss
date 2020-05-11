@@ -1,0 +1,38 @@
+@media screen and (max-width: 600px) {
+  #wpadminbar {
+    position: fixed;
+  }
+}
+
+.post-password-form {
+  label {
+    width: 100%;
+  }
+
+  input[type="password"] {
+    @extend .form-control;
+    @extend .mb-3;
+  }
+
+  input[type="submit"] {
+    @extend .btn;
+    @extend .btn-secondary;
+
+    height: auto;
+  }
+}
+
+$editor-colors: (
+  "teal": $teal,
+  "dark-grey": $dark-grey,
+);
+
+@each $color, $value in $editor-colors {
+  .has-#{$color}-background-color {
+    background-color: $value;
+  }
+
+  .has-#{$color}-color {
+    color: $value;
+  }
+}

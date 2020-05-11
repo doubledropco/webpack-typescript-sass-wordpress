@@ -1,0 +1,171 @@
+{
+    "key": "group_5e7ccfab59845",
+    "title": "Theme Options",
+    "fields": [
+        {
+            "key": "field_5e7ccfb6c0a17",
+            "label": "Branding",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5e7ccfc7c0a18",
+            "label": "Logo",
+            "name": "logo",
+            "type": "image",
+            "instructions": "Note: Only SVG is allowed or the logo",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "svg"
+        },
+        {
+            "key": "field_5e7d883e444f7",
+            "label": "Header",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5e7d8844444f8",
+            "label": "Menu Animation",
+            "name": "header_menu_animation",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "hamburger--3dx": "hamburger--3dx",
+                "hamburger--3dx-r": "hamburger--3dx-r",
+                "hamburger--3dy": "hamburger--3dy",
+                "hamburger--3dy-r": "hamburger--3dy-r",
+                "hamburger--3dxy": "hamburger--3dxy",
+                "hamburger--3dxy-r": "hamburger--3dxy-r",
+                "hamburger--arrow": "hamburger--arrow",
+                "hamburger--arrow-r": "hamburger--arrow-r",
+                "hamburger--arrowalt": "hamburger--arrowalt",
+                "hamburger--arrowalt-r": "hamburger--arrowalt-r",
+                "hamburger--arrowturn": "hamburger--arrowturn",
+                "hamburger--arrowturn-r": "hamburger--arrowturn-r",
+                "hamburger--boring": "hamburger--boring",
+                "hamburger--collapse": "hamburger--collapse",
+                "hamburger--collapse-r": "hamburger--collapse-r",
+                "hamburger--elastic": "hamburger--elastic",
+                "hamburger--elastic-r": "hamburger--elastic-r",
+                "hamburger--emphatic": "hamburger--emphatic",
+                "hamburger--emphatic-r": "hamburger--emphatic-r",
+                "hamburger--minus": "hamburger--minus",
+                "hamburger--slider": "hamburger--slider",
+                "hamburger--slider-r": "hamburger--slider-r",
+                "hamburger--spin": "hamburger--spin",
+                "hamburger--spin-r": "hamburger--spin-r",
+                "hamburger--spring": "hamburger--spring",
+                "hamburger--spring-r": "hamburger--spring-r",
+                "hamburger--stand": "hamburger--stand",
+                "hamburger--stand-r": "hamburger--stand-r",
+                "hamburger--squeeze": "hamburger--squeeze",
+                "hamburger--vortex": "hamburger--vortex",
+                "hamburger--vortex-r": "hamburger--vortex-r"
+            },
+            "default_value": [
+                "hamburger--3dx"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5e891a0888bdd",
+            "label": "Google Maps",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5e891a1688bde",
+            "label": "API Key",
+            "name": "google_maps_api_key",
+            "type": "text",
+            "instructions": "Add your Google Maps API Key here for map boxes to work. See https:\/\/developers.google.com\/maps\/documentation\/javascript\/get-api-key for more information.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "theme-options"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1589231035
+}
