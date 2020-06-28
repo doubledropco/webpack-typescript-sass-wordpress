@@ -14,11 +14,17 @@
   &__widget-2,
   &__widget-3,
   &__widget-4 {
+    @extend .mb-5;
+
     ul,
     li {
       list-style-type: none;
       margin: 0;
       padding: 0;
+    }
+
+    &:last-child {
+      @extend .mb-0;
     }
   }
 
