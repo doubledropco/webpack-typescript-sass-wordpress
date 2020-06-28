@@ -94,7 +94,7 @@ const initMobileMenuToggle = (): void => {
     const toggle = document.getElementById('mobile-nav-toggle');
     const navigation = document.getElementById('header__mobile-nav');
 
-    toggle.addEventListener('click', () => {
+    toggle && toggle.addEventListener('click', () => {
         mobileMenuOpen = !mobileMenuOpen;
 
         if (mobileMenuOpen) {
