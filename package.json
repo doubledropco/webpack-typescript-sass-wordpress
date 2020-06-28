@@ -54,7 +54,7 @@
     "webpack-cli": "^3.3.11"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-pro": "^5.13.0",
+    "@fortawesome/fontawesome-free": "^5.13.0",
     "body-scroll-lock": "^3.0.2",
     "bootstrap": "^4.4.1",
     "core-js": "^3.6.5",

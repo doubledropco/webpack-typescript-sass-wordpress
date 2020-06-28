@@ -211,8 +211,8 @@ add_action('admin_enqueue_scripts', 'admin_style');
  * Print plugin dependencies
  */
 function theme_dependencies () {
-    if( ! is_plugin_active('advanced-custom-fields-pro/acf.php') && ! is_plugin_active('advanced-custom-fields/acf.php') ) {
-        echo '<div class="error"><p>' . __( 'Warning: The Advanced Custom Fields plugin is required for this theme.', 'wordpress-starter' ) . '</p></div>';
+    if( ! is_plugin_active('advanced-custom-fields-pro/acf.php') ) {
+        echo '<div class="error"><p>' . __( 'Warning: The Advanced Custom Fields PRO plugin is required for this theme.', 'wordpress-starter' ) . '</p></div>';
     }
 }
 add_action( 'admin_notices', 'theme_dependencies' );

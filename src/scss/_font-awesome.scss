@@ -1,0 +1,18 @@
+// If using @fortawesome/fontawesome-free package
+
+$fa-font-path: "../node_modules/@fortawesome/fontawesome-free/webfonts";
+
+@import "~@fortawesome/fontawesome-free/scss/mixins.scss";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "~@fortawesome/fontawesome-free/scss/solid.scss";
+@import "~@fortawesome/fontawesome-free/scss/regular.scss";
+
+// If using @fortawesome/fontawesome-pro package
+
+// $fa-font-path: "../node_modules/@fortawesome/fontawesome-pro/webfonts";
+
+// @import "~@fortawesome/fontawesome-pro/scss/mixins.scss";
+// @import "~@fortawesome/fontawesome-pro/scss/fontawesome.scss";
+// @import "~@fortawesome/fontawesome-pro/scss/solid.scss";
+// @import "~@fortawesome/fontawesome-pro/scss/regular.scss";
+// @import "~@fortawesome/fontawesome-pro/scss/light.scss";

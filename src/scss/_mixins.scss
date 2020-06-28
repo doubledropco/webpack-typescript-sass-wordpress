@@ -1,5 +1,3 @@
-@import "~@fortawesome/fontawesome-pro/scss/mixins.scss";
-
 @mixin xs {
   @media (min-width: #{$screen-xs-min}) {
     @content;
