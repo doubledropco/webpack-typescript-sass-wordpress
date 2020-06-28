@@ -35,7 +35,7 @@ endif;
 			new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-			})(window,document,'script','dataLayer','GTM-W9F8W7K');</script>
+			})(window,document,'script','dataLayer','<?php echo $google_tag_manager_key; ?>');</script>
 			<!-- End Google Tag Manager -->
 		<?php endif; ?>
 
@@ -55,7 +55,7 @@ endif;
 	<body <?php body_class(); ?>>
 		<?php if ($google_tag_manager_key): ?>
 			<!-- Google Tag Manager (noscript) -->
-			<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W9F8W7K"
+			<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<?php echo $google_tag_manager_key; ?>"
 			height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<!-- End Google Tag Manager (noscript) -->
 		<?php endif; ?>
