@@ -58,11 +58,21 @@
   }
 }
 
-@mixin hero-height {
-  height: 100vh;
+@mixin hero-height($mobile: 100vh, $desktop: 100vh) {
+  height: calc(#{$mobile} - 90px - 46px);
 
   @include md {
-    height: 700px;
+    height: calc(#{$desktop} - 170px);
+  }
+
+  body.admin-bar & {
+    @include md {
+      height: calc(#{$desktop} - 170px - 46px);
+    }
+
+    @media screen and (min-width: 782px) {
+      height: calc(#{$desktop} - 170px - 32px);
+    }
   }
 }
 
