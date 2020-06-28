@@ -3,6 +3,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const WordpressDependencyExtractionPlugin = require('@wordpress/dependency-extraction-webpack-plugin');
 
 const {
     WEBPACK_ENV
@@ -36,6 +37,7 @@ module.exports = {
         minimizer: [new TerserPlugin()],
     },
     plugins: [
+        new WordpressDependencyExtractionPlugin(),
         new MiniCssExtractPlugin({
             filename: FILE_NAMING_PATTERN.replace('[ext]', 'css'),
             chunkFilename: FILE_NAMING_PATTERN.replace('[ext]', 'css').replace('[name]', '[id]'),

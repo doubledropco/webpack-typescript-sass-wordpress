@@ -105,21 +105,22 @@ function theme_support()
 add_action('after_setup_theme', 'theme_support');
 
 /**
- * Register and Enqueue Styles.
- */
-function register_styles()
-{
-    wp_enqueue_style('main', get_template_directory_uri() . '/static/main.css');
-}
-
-add_action('wp_enqueue_scripts', 'register_styles');
-
-/**
  * Register and Enqueue Scripts.
  */
 function register_scripts()
 {
-    wp_enqueue_script('main', get_template_directory_uri() . '/static/main.js');
+    $script_path = get_template_directory_uri() . '/static/main.js';
+    $script_asset_path = get_template_directory() . '/static/main.asset.php';
+
+    if (file_exists($script_asset_path)) {
+        $script_asset = require $script_asset_path;
+        wp_enqueue_script('script', $script_path, $script_asset['dependencies'], $script_asset['version'], true);
+        wp_enqueue_style('main', get_template_directory_uri() . '/static/main.css', array(), $script_asset['version']);
+    } else {
+        wp_enqueue_script('script', $script_path, array(), null, true);
+        wp_enqueue_style('main', get_template_directory_uri() . '/static/main.css', array(), null);
+    }
+
     wp_enqueue_script('gsap', get_template_directory_uri() . '/assets/gsap.min.js');
     wp_enqueue_script('gsap-draw-svg', get_template_directory_uri() . '/assets/DrawSVGPlugin.min.js');
 }
@@ -187,7 +188,7 @@ function button($link, $class = false, $icon = false)
         $className .= ' ' . $class;
     }
     ?>
-        <a class="<?php echo $className; ?>" href="<?php echo $link['url']; ?>" <?php if (isset($link['target'])): ?>target="<?php echo $link['target']; ?>"<?php endif; ?>>
+        <a class="<?php echo $className; ?>" href="<?php echo $link['url']; ?>" <?php if (isset($link['target'])): ?>target="<?php echo $link['target']; ?>"<?php endif;?>>
             <?php echo $link['title']; ?>
 
             <?php if ($icon): ?>
@@ -210,9 +211,11 @@ add_action('admin_enqueue_scripts', 'admin_style');
 /**
  * Print plugin dependencies
  */
-function theme_dependencies () {
-    if( ! is_plugin_active('advanced-custom-fields-pro/acf.php') ) {
-        echo '<div class="error"><p>' . __( 'Warning: The Advanced Custom Fields PRO plugin is required for this theme.', 'wordpress-starter' ) . '</p></div>';
+function theme_dependencies()
+{
+    if ( ! is_plugin_active('advanced-custom-fields-pro/acf.php')) {
+        echo '<div class="error"><p>' . __('Warning: The Advanced Custom Fields PRO plugin is required for this theme.', 'wordpress-starter') . '</p></div>';
     }
 }
-add_action( 'admin_notices', 'theme_dependencies' );
+
+add_action('admin_notices', 'theme_dependencies');
