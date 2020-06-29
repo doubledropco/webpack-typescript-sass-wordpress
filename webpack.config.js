@@ -3,13 +3,9 @@ const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
-const WordpressDependencyExtractionPlugin = require('@wordpress/dependency-extraction-webpack-plugin');
+const DependencyExtractionWebpackPlugin = require( '@wordpress/dependency-extraction-webpack-plugin' );
 
-const {
-    WEBPACK_ENV
-} = process.env;
-
-
+const { WEBPACK_ENV } = process.env;
 
 const THEME_NAME = path.basename(process.cwd());
 const BUILD_DIR = path.resolve(__dirname, 'build');
@@ -21,11 +17,22 @@ module.exports = {
     mode: MODE,
     devtool: DEVTOOL,
     entry: {
+        tabs: [
+            './src/blocks/tabs/tabs.jsx',
+            './src/blocks/tabs/tabs.scss',
+        ],
+        tab: [
+            './src/blocks/tab/tab.jsx',
+            './src/blocks/tab/tab.scss',
+        ],
         main: [
             'core-js/stable',
             './src/main.ts',
             './src/main.scss',
         ],
+        admin: [
+            './src/admin.scss',
+        ]
     },
     output: {
         filename: FILE_NAMING_PATTERN.replace('[ext]', 'js'),
@@ -37,20 +44,20 @@ module.exports = {
         minimizer: [new TerserPlugin()],
     },
     plugins: [
-        new WordpressDependencyExtractionPlugin(),
+        new DependencyExtractionWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: FILE_NAMING_PATTERN.replace('[ext]', 'css'),
             chunkFilename: FILE_NAMING_PATTERN.replace('[ext]', 'css').replace('[name]', '[id]'),
         }),
         new CopyPlugin([
             { from: 'assets', to: '../assets', context: 'src' },
+            { from: 'blocks/*.php', to: '../', context: 'src' },
             { from: 'classes', to: '../classes', context: 'src' },
             { from: 'template-parts', to: '../template-parts', context: 'src' },
             { from: 'templates', to: '../templates', context: 'src' },
             { from: '*.php', to: '../.', context: 'src' },
             { from: 'screenshot.png', to: '../.', context: 'src' },
             { from: '_style.css', to: '../style.css', context: 'src' },
-            { from: 'admin.css', to: '../admin.css', context: 'src' },
         ]),
     ],
     resolve: {
@@ -84,7 +91,7 @@ module.exports = {
             },
             {
                 test: /\.scss/,
-                enforce: "pre",
+                enforce: 'pre',
                 loader: 'import-glob-loader'
             },
             {
@@ -93,9 +100,6 @@ module.exports = {
                     MiniCssExtractPlugin.loader,
                     {
                         loader: 'css-loader',
-                        options: {
-                            sourceMap: true,
-                        }
                     },
                     {
                         loader: 'postcss-loader',

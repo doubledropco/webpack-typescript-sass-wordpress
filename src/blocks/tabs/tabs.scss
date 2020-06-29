@@ -1,0 +1,34 @@
+.wp-block-wordpress-starter-tabs {
+  &__tabs {
+    display: flex;
+    align-items: center;
+    padding-top: 40px;
+  }
+
+  &__tab {
+    border: 1px solid black;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    padding: 0 10px;
+    opacity: 0.5;
+    cursor: pointer;
+    position: relative;
+  }
+
+  &__tab--active {
+    border-bottom: 0;
+    opacity: 1;
+  }
+
+  &__controls {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    .components-button-group {
+      display: flex;
+      flex-wrap: nowrap;
+    }
+  }
+}

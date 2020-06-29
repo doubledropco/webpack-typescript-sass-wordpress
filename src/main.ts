@@ -7,6 +7,8 @@ import ScrollMagic from 'scrollmagic';
 import Lazyload from 'vanilla-lazyload';
 
 import initHeroBlock from '@blocks/hero';
+
+import './blocks/tabs/frontend';
 declare global {
     interface Window { 
         gmak: string; // gmak - Google Maps API Key

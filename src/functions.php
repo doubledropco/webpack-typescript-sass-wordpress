@@ -20,6 +20,10 @@ require get_template_directory() . '/classes/class-widgets.php';
 
 require get_template_directory() . '/classes/class-blocks.php';
 
+require get_template_directory() . '/blocks/tabs.php';
+
+require get_template_directory() . '/blocks/tab.php';
+
 new Post_Types();
 
 new Theme_Options();
@@ -232,7 +236,7 @@ function button($link, $class = false, $icon = false)
  */
 function admin_style()
 {
-    wp_enqueue_style('admin-styles', get_template_directory_uri() . '/admin.css');
+    wp_enqueue_style('admin-styles', get_template_directory_uri() . '/static/admin.css');
 }
 
 add_action('admin_enqueue_scripts', 'admin_style');

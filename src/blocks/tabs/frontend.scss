@@ -1,0 +1,26 @@
+.wp-block-wordpress-starter-tabs {
+  &__tabs-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__tabs-content {
+    overflow: hidden;
+  }
+
+  &__tabs {
+    display: flex;
+    align-items: center;
+    padding-bottom: 32px;
+    overflow-x: auto;
+  }
+
+  &__tab {
+    cursor: pointer;
+    padding: 10px 20px;
+
+    &--active {
+      background: #e8e8e8;
+    }
+  }
+}
