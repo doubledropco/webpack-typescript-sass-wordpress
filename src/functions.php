@@ -215,7 +215,6 @@ add_filter('upload_mimes', 'cc_mime_types');
  */
 function button($link, $class = false, $icon = false)
 {
-    error_log($class);
     $className = 'btn';
     if ($class) {
         $className .= ' ' . $class;
