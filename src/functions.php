@@ -243,7 +243,7 @@ add_action('admin_enqueue_scripts', 'admin_style');
 function theme_dependencies()
 {
     if ( ! is_plugin_active('advanced-custom-fields-pro/acf.php')) {
-        echo '<div class="error"><p>' . __('Warning: The Advanced Custom Fields PRO plugin is required for this theme.', 'wordpress-starter') . '</p></div>';
+        echo '<div class="notice notice-error"><p>' . __('Warning: The Advanced Custom Fields PRO plugin is required for this theme.', 'wordpress-starter') . '</p></div>';
     }
 }
 
