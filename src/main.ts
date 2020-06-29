@@ -11,6 +11,9 @@ declare global {
     interface Window { 
         gmak: string; // gmak - Google Maps API Key
         initGoogleMaps: () => void; 
+        Sentry?: {
+            captureException: (e: Error) => void;
+        };
     }
 }
 
@@ -148,6 +151,14 @@ $(document).ready(function() {
             fn();
         } catch (e) {
             console.error(e);
+            try {
+                if (typeof window.Sentry === 'object' && typeof window.Sentry.captureException === 'function') {
+                    window.Sentry.captureException(e);
+                }
+            } catch (_e) {
+                console.error('Failed to send error to Sentry')
+                console.error(_e);
+            }
         }
     })
 
