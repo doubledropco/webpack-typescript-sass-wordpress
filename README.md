@@ -9,7 +9,15 @@ A Wordpress starter theme powered by Webpack, Typescript, and Sass.
 3. Develop with `yarn dev`
 4. Build for production with `yarn build`
 
-A `build` directory is created with all of the deployable files. You can upload the entire repository or only the `build` folder - but uploading only the build directory is the preferred method.
+A `build` directory is created with all of the deployable files. You should upload the entire build directory and the acf json folder as the theme. The webserver should look like this:
+
+```
+wp-content
+└── themes
+   └── webpack-typescript-sass-wordpress
+      ├── acf-json
+      └── build
+```
 
 ## Dependencies
 
