@@ -6,6 +6,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: #{$header-height + 75px};
+}
+
 body {
   touch-action: manipulation;
 }
