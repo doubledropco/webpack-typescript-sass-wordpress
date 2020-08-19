@@ -1,7 +1,10 @@
+@import './scss/variables';
+//
 @import '~normalize.css/normalize.css';
 @import '~bootstrap/scss/bootstrap';
+@import '~hamburgers/_sass/hamburgers/hamburgers';
+//
 @import './scss/font-awesome';
-@import './scss/variables';
 @import './scss/reset';
 @import './scss/mixins';
 @import './scss/layout';
@@ -10,6 +13,6 @@
 @import './scss/main';
 @import './scss/wordpress';
 @import './scss/scroll-magic';
+//
 @import './template-parts/blocks/**/*.scss';
 @import './blocks/**/frontend.scss';
-@import '~hamburgers/_sass/hamburgers/hamburgers';
