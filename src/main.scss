@@ -4,15 +4,16 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~hamburgers/_sass/hamburgers/hamburgers';
 //
-@import './scss/font-awesome';
-@import './scss/reset';
 @import './scss/mixins';
-@import './scss/layout';
+@import './scss/reset';
+@import './scss/font-awesome';
 @import './scss/header';
 @import './scss/footer';
 @import './scss/main';
-@import './scss/wordpress';
+@import './scss/layout';
 @import './scss/scroll-magic';
+@import './scss/typography';
+@import './scss/wordpress';
 //
 @import './template-parts/blocks/**/*.scss';
 @import './blocks/**/frontend.scss';

@@ -1,0 +1,103 @@
+.display-1 {
+  font-size: $display1-size / 1.6;
+
+  @include md {
+    font-size: $display1-size;
+  }
+}
+
+.display-2 {
+  font-size: $display2-size / 1.6;
+
+  @include md {
+    font-size: $display2-size;
+  }
+}
+
+.display-3 {
+  font-size: $display3-size / 1.6;
+
+  @include md {
+    font-size: $display3-size;
+  }
+}
+
+.display-4 {
+  font-size: $display4-size / 1.6;
+
+  @include md {
+    font-size: $display4-size;
+  }
+}
+
+h1,
+.h1 {
+  font-weight: bold;
+  margin-bottom: 1rem;
+  font-size: 35px;
+  line-height: 1.2;
+
+  @include md {
+    font-size: 50px;
+  }
+}
+
+h2,
+.h2 {
+  font-weight: 500;
+  margin-bottom: 1rem;
+  font-size: 30px;
+  line-height: 1.2;
+
+  @include md {
+    font-size: 35px;
+  }
+}
+
+h3,
+.h3 {
+  font-weight: 500;
+  margin-bottom: 1rem;
+  font-size: 24px;
+  line-height: 1.2;
+
+  @include md {
+    font-size: 28px;
+  }
+}
+
+h4,
+.h4 {
+  font-weight: 500;
+  margin-bottom: 1rem;
+  font-size: 22px;
+  line-height: 1.2;
+
+  @include md {
+    font-size: 24px;
+  }
+}
+
+h5,
+.h5 {
+  font-weight: 500;
+  margin-bottom: 1rem;
+  font-size: 20px;
+  line-height: 1.2;
+
+  @include md {
+    font-size: 22px;
+  }
+}
+
+h6,
+.h6 {
+  font-weight: 500;
+  margin-bottom: 1rem;
+  font-size: 18px;
+  line-height: 1.2;
+
+  @include md {
+    font-size: 20px;
+  }
+}
