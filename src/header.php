@@ -93,9 +93,6 @@ endif;
 				<?php if ( has_nav_menu( 'primary-mobile' ) ): ?>
 
 					<div id="header__mobile-nav" class="header__mobile-nav">
-						<?php if( is_active_sidebar('doubledrop-widget-header-mobile') ) : ?>		
-							<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('doubledrop-widget-header-mobile') ) : endif; ?>
-						<?php endif;?>
 
 						<?php
 							wp_nav_menu(
