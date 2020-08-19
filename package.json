@@ -1,5 +1,5 @@
 {
-  "name": "doubledrop",
+  "name": "webpack-typescript-sass-wordpress",
   "version": "1.0.0",
   "description": "Wordpress development environment powered by Typescript + Webpack",
   "main": "index.js",
