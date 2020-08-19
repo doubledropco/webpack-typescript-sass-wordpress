@@ -108,7 +108,7 @@ endif;
 
 				<?php if ( has_nav_menu( 'primary-mobile' ) ): ?>
 					<div class="header__menu-toggle">
-						<button id="mobile-nav-toggle" class="hamburger <?php echo $header_menu_animation; ?>" type="button">
+						<button id="mobile-nav-toggle" class="hamburger <?php echo $header_menu_animation; ?>" type="button" aria-label="Toggle mobile menu">
 							<span class="hamburger-box">
 								<span class="hamburger-inner"></span>
 							</span>
