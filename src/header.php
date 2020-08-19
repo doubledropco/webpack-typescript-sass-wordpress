@@ -20,7 +20,7 @@ $google_maps_api_key = get_field('google_maps_api_key', 'option');
 $header_menu_animation = get_field('header_menu_animation', 'option');
 
 if ($logo):
-	$logo_svg_inline = file_get_contents($logo);
+	$logo_svg_inline = file_get_contents(ABSPATH . parse_url($logo, PHP_URL_PATH));
 endif;
 
 ?>
