@@ -205,10 +205,11 @@ add_filter('acf/settings/load_json', 'acf_json_load_point');
 function cc_mime_types($mimes)
 {
     $mimes['svg'] = 'image/svg+xml';
+    $mimes['webp'] = 'image/webp';
     return $mimes;
 }
 
-add_filter('upload_mimes', 'cc_mime_types');
+add_filter('upload_mimes', 'cc_mime_types', 1, 1);
 
 /**
  * Output a bootstrap button withe extra classes or an icon added
