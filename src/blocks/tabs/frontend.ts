@@ -1,7 +1,5 @@
 import $ from 'jquery';
 
-console.log("FRONTEND!");
-
 const setActiveTab = (block: HTMLElement, tabId: string): void => {
     block.querySelectorAll('.wp-block-wordpress-starter-tab').forEach(content => {
         if (tabId === content.getAttribute('data-tab-id')) {
