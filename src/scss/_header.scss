@@ -303,10 +303,18 @@
     margin-left: auto;
     z-index: $z-mobile-menu-toggle;
   }
+}
 
-  .hamburger {
-    &:focus {
-      outline: none;
-    }
+.hamburger {
+  &:focus {
+    outline: none;
+  }
+}
+
+.hamburger-box {
+  *,
+  *::before,
+  *::after {
+    transition: all 0.3s !important;
   }
 }

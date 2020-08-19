@@ -33,9 +33,9 @@ $timing: cubic-bezier(0.12, 0.845, 0.305, 1);
 
 $hamburger-padding-x: 10px;
 $hamburger-padding-y: 10px;
-$hamburger-layer-width : 30px !default;
-$hamburger-layer-height : 3px !default;
-$hamburger-layer-spacing : 6px !default;
+$hamburger-layer-width: 25px;
+$hamburger-layer-height: 2px;
+$hamburger-layer-spacing: 5px;
 
 $grid-breakpoints: (
   xs: 0,
