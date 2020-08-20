@@ -161,6 +161,54 @@ function page_custom_column_views($column_name, $id)
 }
 
 /**
+ * Wrap core blocks
+ */
+function wrap_core_blocks($block_content, $block)
+{
+    global $wp_query;
+    $block_name = $block['blockName'];
+    $attrs = $block['attrs'];
+    $container_class = 'container-fluid';
+
+    if (
+        $wp_query->is_single()
+    ) {
+        $container_class = 'container-fluid-sm';
+    }
+
+    if (
+        strpos($block_name, 'core/column') !== false ||
+        strpos($block_name, 'core/group') !== false ||
+        strpos($block_name, 'core/block') !== false ||
+        strpos($block_name, 'core/html') !== false ||
+        strpos($block_name, 'acf/contact') !== false
+    ) {
+        return $block_content;
+    }
+
+    if (
+        (
+            strpos($block_name, 'core/') !== false ||
+            strpos($block_name, 'core-embed') !== false ||
+            strpos($block_name, 'gravityforms/form') !== false
+        )
+        &&
+        $attrs['align'] !== 'full'
+    ) {
+        $class = $container_class;
+        if ($attrs['align'] == 'center') {
+            $class .= ' text-center';
+        }
+        return '<div class="' . $class . '">' . $block_content . '</div>';
+    }
+
+    return $block_content;
+}
+
+add_filter('render_block', 'wrap_core_blocks', 10, 2);
+
+
+/**
  * Register navigation menus uses wp_nav_menu in five places.
  */
 function menus()

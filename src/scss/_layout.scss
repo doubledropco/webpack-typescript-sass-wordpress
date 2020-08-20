@@ -1,89 +1,81 @@
 
-@mixin fit-elements {
-  & > h1,
-  & > h2,
-  & > h3,
-  & > h4,
-  & > h5,
-  & > h6,
-  & > p,
-  & > a,
-  & > img,
-  & > ul,
-  & > ol,
-  & > blockquote,
-  & > div:not(.hero),
-  & > span {
-    &:not(.alignfull) {
-      @extend .container-fluid;
-    }
-
-    display: block;
-    margin-bottom: 25px;
-
-    &:last-child {
-      margin-bottom: 0 !important;
-    }
-  }
-
-  & > ul,
-  & > ol {
-    padding-left: 40px !important;
-  }
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .container-fluid {
   width: 100%;
   max-width: $page-inner-width;
+
+  .page-header-hero + & {
+    @extend .mt-3;
+    @extend .mt-md-5;
+  }
 }
 
-.wp-block-group {
-  overflow: auto;
-  margin-block-start: 0;
-  margin-block-end: 0;
-  margin-inline-start: 0;
-  margin-inline-end: 0;
+.container-full-width {
+  max-width: 100%;
+  width: 100%;
 
-  @include fit-elements;
-}
+  &__half {
+    width: 100%;
+    max-width: $page-inner-width / 2;
+  }
 
-.wp-block-columns {
-  display: flex !important;
+  &__content {
+    width: 100%;
+  }
 
-  .wp-block-column {
-    blockquote {
-      padding-left: 0 !important;
-      padding-right: 0 !important;
-    }
+  &--left {
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+    height: 100%;
+    padding: $page-gutter;
+  }
+
+  &--right {
+    display: flex;
+    margin-right: auto;
+    align-items: center;
+    height: 100%;
+    padding: $page-gutter;
   }
 }
 
 .main {
-  overflow: auto;
-  min-height: 50vh;
-  padding-top: $header-height;
-  padding-bottom: 100px;
+  margin-top: $header-height;
 
-  @include fit-elements;
+  .header--top-only + & {
+    margin-top: 40px;
+  }
 
-  & > {
-    .wp-block-columns,
-    .wp-block-button,
-    .wp-block-quote,
-    .wp-block-group,
-    .wp-block-video,
-    .wp-block-image {
-      @extend .container-fluid;
-
-      margin-block-start: 1em;
-      margin-block-end: 1em;
-      margin-inline-start: 0;
-      margin-inline-end: 0;
-
-      &.alignfull {
-        max-width: 100%;
-        padding: 0;
-      }
+  .container-fluid {
+    .container-fluid {
+      padding-left: 0;
+      padding-right: 0;
     }
   }
+
+  flex: 1;
+  min-height: 50vh;
+
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+
+  &.alignfull {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  body.no-header & {
+    margin-top: 0 !important;
+  }
+}
+
+[id*=eventbrite-widget-container] {
+  @extend .container-fluid;
 }
