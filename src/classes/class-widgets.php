@@ -19,6 +19,27 @@ class Widgets
         if (function_exists('register_sidebar')):
 
             register_sidebar(array(
+                'name' => 'Header Navigation',
+                'id' => 'widget-header-navigation',
+                'before_widget' => '<div class="header__widget-header-navigation d-none d-md-block">',
+                'after_widget' => '</div>',
+            ));
+
+            register_sidebar(array(
+                'name' => 'Mobile Menu (Before)',
+                'id' => 'widget-mobile-menu-before',
+                'before_widget' => '<div class="header__mobile-nav-widget-before">',
+                'after_widget' => '</div>',
+            ));
+
+            register_sidebar(array(
+                'name' => 'Mobile Menu (After)',
+                'id' => 'widget-mobile-menu-after',
+                'before_widget' => '<div class="header__mobile-nav-widget-after">',
+                'after_widget' => '</div>',
+            ));
+
+            register_sidebar(array(
                 'name' => 'Footer Column 1',
                 'id' => 'widget-footer-1',
                 'before_widget' => '<div class="footer__widget-1">',

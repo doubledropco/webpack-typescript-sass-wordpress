@@ -64,7 +64,7 @@ endif;
 
 		<header class="header" id="header">
 
-			<div class="container-fluid header__flex">
+			<div class="container-fluid header__container">
 
 				<div class="header__logo">
 					<a href="<?php echo $site_url ?>" title="<?php echo $site_name ?>">
@@ -90,9 +90,17 @@ endif;
 
 				?>
 
-				<?php if ( has_nav_menu( 'primary-mobile' ) ): ?>
+				<?php if( is_active_sidebar('widget-header-navigation') ) : ?>		
+					<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('widget-header-navigation') ) : endif; ?>
+				<?php endif;?>
+
+				<?php if ( has_nav_menu( 'primary-mobile' ) || is_active_sidebar('widget-mobile-menu-before')  || is_active_sidebar('widget-mobile-menu-after')  ): ?>
 
 					<div id="header__mobile-nav" class="header__mobile-nav">
+
+						<?php if( is_active_sidebar('widget-mobile-menu-before') ) : ?>		
+							<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('widget-mobile-menu-before') ) : endif; ?>
+						<?php endif;?>
 
 						<?php
 							wp_nav_menu(
@@ -103,10 +111,12 @@ endif;
 							);
 						?>
 
-					</div>	
-				<?php endif; ?>
+						<?php if( is_active_sidebar('widget-mobile-menu-after') ) : ?>		
+							<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('widget-mobile-menu-after') ) : endif; ?>
+						<?php endif;?>
 
-				<?php if ( has_nav_menu( 'primary-mobile' ) ): ?>
+					</div>	
+
 					<div class="header__menu-toggle">
 						<button id="mobile-nav-toggle" class="hamburger <?php echo $header_menu_animation; ?>" type="button" aria-label="Toggle mobile menu">
 							<span class="hamburger-box">
