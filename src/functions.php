@@ -8,13 +8,11 @@
  * @since 1.0.0
  */
 
-require get_template_directory() . '/classes/class-desktop-nav-walker.php';
-
-require get_template_directory() . '/classes/class-mobile-nav-walker.php';
-
 require get_template_directory() . '/classes/class-post-types.php';
 
 require get_template_directory() . '/classes/class-theme-options.php';
+
+require get_template_directory() . '/classes/class-menus.php';
 
 require get_template_directory() . '/classes/class-widgets.php';
 
@@ -27,6 +25,8 @@ require get_template_directory() . '/blocks/tab.php';
 new Post_Types();
 
 new Theme_Options();
+
+new Menus();
 
 new Widgets();
 
@@ -206,23 +206,6 @@ function wrap_core_blocks($block_content, $block)
 }
 
 add_filter('render_block', 'wrap_core_blocks', 10, 2);
-
-
-/**
- * Register navigation menus uses wp_nav_menu in five places.
- */
-function menus()
-{
-
-    $locations = array(
-        'primary-desktop' => __('Primary Desktop', 'wordpress-starter'),
-        'primary-mobile' => __('Primary Mobile', 'wordpress-starter'),
-    );
-
-    register_nav_menus($locations);
-}
-
-add_action('init', 'menus');
 
 /**
  * Use custom ACF save point
