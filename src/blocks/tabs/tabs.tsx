@@ -1,25 +1,40 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { __ } from '@wordpress/i18n';
-import { registerBlockType, createBlock } from '@wordpress/blocks';
+import { registerBlockType, createBlock, BlockAttribute, BlockInstance, BlockEditProps, BlockSaveProps } from '@wordpress/blocks';
 import { InnerBlocks, RichText } from '@wordpress/block-editor';
 import { withDispatch } from '@wordpress/data';
 import { compose } from '@wordpress/compose';
 import { IconButton, ButtonGroup, Button } from '@wordpress/components';
 import clsx from 'clsx';
 
+type Tab = {
+	title: string;
+	uid: string;
+}
+
+type Attributes = {
+	tabs: Tab[];
+	activeTab: string;
+}
+
+type AttributesConfig = {
+	tabs: BlockAttribute<Tab>;
+	activeTab: BlockAttribute<string>;
+}
+
 const ALLOWED_BLOCKS = ['wordpress-starter/tab'];
-const DEFAULT_ATTRIBUTES = {
+const DEFAULT_ATTRIBUTES: AttributesConfig = {
 	tabs: {
 		type: 'array',
 		default: []
 	},
-	tabActive: {
+	activeTab: {
 		type: 'string',
 		default: '',
 	},
 };
 
-const arrayMove = (arr, oldIndex, newIndex) => {
+const moveTab = (arr: Tab[], oldIndex: number, newIndex: number): void => {
     if (newIndex >= arr.length) {
         let k = newIndex - arr.length + 1;
         while (k--) {
@@ -29,17 +44,29 @@ const arrayMove = (arr, oldIndex, newIndex) => {
     arr.splice(newIndex, 0, arr.splice(oldIndex, 1)[0]);
 };
 
+type TabHeaderProps = {
+	children?: React.ReactElement;
+	className?: string;
+	active: boolean;
+	first: boolean;
+	last: boolean;
+	moveLeft: () => void;
+	moveRight: () => void;
+	remove: () => void;
+}
 
-const TabHeader = ({
-	children,
-	className,
-	active,
-	first,
-	last,
-	moveLeft,
-	moveRight,
-	remove
-}) => {
+const TabHeader: React.FC<TabHeaderProps> = (props: TabHeaderProps) => {
+	const {
+		children,
+		className,
+		active,
+		first,
+		last,
+		moveLeft,
+		moveRight,
+		remove
+	} = props;
+
 	let tabClass = `${className}__tab`;
 	if (active) {
 		tabClass += ` ${className}__tab--active`;
@@ -52,9 +79,9 @@ const TabHeader = ({
 			{active && (
 				<div className={`${className}__controls`}>
 					<ButtonGroup>
-						<Button isSmall disabled={first} onClick={moveLeft}><i class="fas fa-chevron-left"></i></Button>
-						<Button isSmall onClick={remove}><i class="fas fa-times"></i></Button>
-						<Button isSmall disabled={last} onClick={moveRight}><i class="fas fa-chevron-right"></i></Button>
+						<Button isSmall disabled={first} onClick={moveLeft}><i className="fas fa-chevron-left"></i></Button>
+						<Button isSmall onClick={remove}><i className="fas fa-times"></i></Button>
+						<Button isSmall disabled={last} onClick={moveRight}><i className="fas fa-chevron-right"></i></Button>
 					</ButtonGroup>
 				</div>
 			)}
@@ -63,17 +90,38 @@ const TabHeader = ({
 	);
 };
 
-const TabsEdit = ({
-	clientId,
-	className,
-	attributes,
-	setAttributes,
-	setActiveTab,
-	insertBlock,
-	moveBlockToPosition,
-	getBlock,
-	removeBlock,
-}) => {
+interface TabsEditProps extends BlockEditProps<Attributes> {
+	clientId?: string;
+	attributes: Attributes;
+	setActiveTab: (uid: string) => void;
+	removeBlock: (clientId: string, selectPrevious?: boolean) => void;
+	insertBlock: (
+		block: BlockInstance,
+		index?: number,
+		rootClientId?: string,
+		updateSelection?: boolean
+	) => void;
+	moveBlockToPosition: (
+		clientId: string | undefined,
+		fromRootClientId: string | undefined,
+		toRootClientId: string | undefined,
+		index: number
+	) => IterableIterator<void>;
+	getBlock: (clientId: string) => BlockInstance | null;
+}
+
+const TabsEdit: React.FC<TabsEditProps> = (props: TabsEditProps) => {
+	const {
+		clientId,
+		className,
+		attributes,
+		setAttributes,
+		setActiveTab,
+		insertBlock,
+		moveBlockToPosition,
+		getBlock,
+		removeBlock,
+	} = props;
 	const { tabs, activeTab } = attributes;
 
 	useEffect(() => {
@@ -93,24 +141,24 @@ const TabsEdit = ({
 							active={uid === activeTab}
 							first={i === 0}
 							last={i + 1 === tabs.length}
-							moveLeft={() => {
+							moveLeft={(): void => {
 								const newTabs = [...tabs];
 								const block = getBlock(clientId);
 								const childBlock = block.innerBlocks.find(b => b.attributes.uid === uid);
-								arrayMove(newTabs, i, i - 1);
+								moveTab(newTabs, i, i - 1);
 								setAttributes({ tabs: newTabs });
 								moveBlockToPosition(childBlock.clientId, block.clientId, block.clientId, i - 1);
 
 							}}
-							moveRight={() => {
+							moveRight={(): void => {
 								const newTabs = [...tabs];
 								const block = getBlock(clientId);
 								const childBlock = block.innerBlocks.find(b => b.attributes.uid === uid);
-								arrayMove(newTabs, i, i + 1);
+								moveTab(newTabs, i, i + 1);
 								setAttributes({ tabs: newTabs });
 								moveBlockToPosition(childBlock.clientId, block.clientId, block.clientId, i - 1);
 							}}
-							remove={() => {
+							remove={(): void => {
 								const newTabs = tabs.filter(t => t.uid !== uid);
 								const block = getBlock(clientId);
 								const childBlock = block.innerBlocks.find(b => b.attributes.uid === uid);
@@ -119,15 +167,15 @@ const TabsEdit = ({
 							}}
 						>
 							<div
-								onClick={() => setActiveTab(uid)}
-								onKeyDown={() => setActiveTab(uid)}
+								onClick={(): void => setActiveTab(uid)}
+								onKeyDown={(): void => setActiveTab(uid)}
 								role="tab"
-								tabIndex="0"
+								tabIndex={0}
 							>
 								<RichText
 									tagName="div"
 									value={title}
-									onChange={(value) => {
+									onChange={(value): void => {
 										const newTabs = [...tabs];
 										newTabs[i].title = value;
 										setAttributes({ tabs: newTabs });
@@ -140,7 +188,7 @@ const TabsEdit = ({
 				<IconButton
 					icon="plus"
 					label="Add Tab"
-					onClick={() => {
+					onClick={(): void => {
 						const position = tabs.length;
 						const tab = createBlock(
 							'wordpress-starter/tab'
@@ -161,14 +209,17 @@ const TabsEdit = ({
 			</div>
 			<InnerBlocks
 				allowedBlocks={ALLOWED_BLOCKS}
-				renderAppender={false}
+				renderAppender={() => null}
 			/>
 		</div>
 	);
 };
 
-const TabsSave = ({ attributes }) => {
+type TabsSaveProps = BlockSaveProps<Attributes>;
+
+const TabsSave: React.FC<TabsSaveProps> = (props: TabsSaveProps) => {
 	const className = 'wp-block-wordpress-starter-tabs';
+	const { attributes } = props;
 	const { tabs } = attributes;
 
 	return (
@@ -209,6 +260,7 @@ registerBlockType('wordpress-starter/tabs', {
 			const { updateBlockAttributes, insertBlock, removeBlock, moveBlockToPosition } = dispatch(
 				'core/block-editor'
 			);
+			// @ts-ignore
 			const block = getBlock(ownProps.clientId);
 
 			return {
@@ -216,7 +268,8 @@ registerBlockType('wordpress-starter/tabs', {
 				moveBlockToPosition,
 				insertBlock,
 				removeBlock,
-				setActiveTab(activeTab) {
+				setActiveTab(activeTab: string): void {
+					// @ts-ignore
 					updateBlockAttributes(ownProps.clientId, { activeTab });
 					block.innerBlocks.forEach((innerBlock) => {
 						updateBlockAttributes(innerBlock.clientId, {

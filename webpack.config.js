@@ -18,11 +18,11 @@ module.exports = {
     devtool: DEVTOOL,
     entry: {
         tabs: [
-            './src/blocks/tabs/tabs.jsx',
+            './src/blocks/tabs/tabs.tsx',
             './src/blocks/tabs/tabs.scss',
         ],
         tab: [
-            './src/blocks/tab/tab.jsx',
+            './src/blocks/tab/tab.tsx',
             './src/blocks/tab/tab.scss',
         ],
         main: [

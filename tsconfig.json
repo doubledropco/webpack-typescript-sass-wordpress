@@ -17,5 +17,6 @@
         "paths": {
             "@blocks/*": ["template-parts/blocks/*"],
         }
-    }
+    },
+    "exclude": ["vendor"]
 }

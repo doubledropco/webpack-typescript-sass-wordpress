@@ -1,10 +1,20 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { __ } from '@wordpress/i18n';
-import { registerBlockType } from '@wordpress/blocks';
+import { registerBlockType, BlockAttribute, BlockSaveProps, BlockEditProps } from '@wordpress/blocks';
 import { InnerBlocks } from '@wordpress/block-editor';
 import clsx from 'clsx';
 
-const DEFAULT_ATTRIBUTES = {
+type Attributes = {
+	uid: string;
+	activeTab: string;
+}
+
+type AttributesConfig = {
+	uid: BlockAttribute<string>;
+	activeTab: BlockAttribute<string>;
+}
+
+const DEFAULT_ATTRIBUTES: AttributesConfig = {
 	activeTab: {
 		type: 'string',
 		default: '',
@@ -15,7 +25,12 @@ const DEFAULT_ATTRIBUTES = {
 	},
 };
 
-const TabEdit = ({ className, clientId, attributes, setAttributes }) => {
+interface TabEditProps extends BlockEditProps<Attributes> {
+	clientId: string;
+}
+
+const TabEdit: React.FC<TabEditProps> = (props: TabEditProps) => {
+	const { className, clientId, attributes, setAttributes } = props;
 	const { activeTab, uid } = attributes;
 
 	useEffect(() => {
@@ -34,7 +49,13 @@ const TabEdit = ({ className, clientId, attributes, setAttributes }) => {
 	);
 };
 
-const TabSave = ({ className, attributes }) => {
+interface TabSaveProps extends BlockSaveProps<Attributes> {
+	className?: string;
+	clientId?: string;
+}
+
+const TabSave: React.FC<TabSaveProps> = (props: TabSaveProps) => {
+	const { className, attributes } = props;
 	const { uid } = attributes;
 
 	return (
