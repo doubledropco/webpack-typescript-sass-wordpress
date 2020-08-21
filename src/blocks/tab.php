@@ -3,7 +3,7 @@
  * Functions to register client-side assets (scripts and stylesheets) for the
  * Gutenberg block.
  *
- * @package Webpack + Typescript + Sass + Wordpress
+ * @package Webpack + Typescript + Sass + WordPress
  */
 
 /**
@@ -34,9 +34,12 @@ function tab_block_init() {
 		get_template_directory_uri() . '/static/tab.css'
 	);
 
-	register_block_type( 'wordpress-starter/tab', array(
-		'editor_script' => 'tab-block-editor',
-		'editor_style'  => 'tab-block-editor',
-	) );
+	register_block_type(
+		'wordpress-starter/tab',
+		array(
+			'editor_script' => 'tab-block-editor',
+			'editor_style'  => 'tab-block-editor',
+		)
+	);
 }
 add_action( 'init', 'tab_block_init' );

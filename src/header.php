@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package Webpack + Typescript + Sass + Wordpress
+ * @package Webpack + Typescript + Sass + WordPress
  * @since 1.0.0
  */
 
@@ -12,15 +12,15 @@
 
 <?php
 
-$site_name = get_bloginfo('name');
-$site_url = get_site_url();
-$logo = get_field('logo', 'option');
-$google_tag_manager_key = get_field('google_tag_manager_key', 'option');
-$google_maps_api_key = get_field('google_maps_api_key', 'option');
-$header_menu_animation = get_field('header_menu_animation', 'option');
+$site_name              = get_bloginfo( 'name' );
+$site_url               = get_site_url();
+$logo                   = get_field( 'logo', 'option' );
+$google_tag_manager_key = get_field( 'google_tag_manager_key', 'option' );
+$google_maps_api_key    = get_field( 'google_maps_api_key', 'option' );
+$header_menu_animation  = get_field( 'header_menu_animation', 'option' );
 
-if ($logo):
-	$logo_svg_inline = file_get_contents(ABSPATH . parse_url($logo, PHP_URL_PATH));
+if ( $logo ) :
+	$logo_svg_inline = file_get_contents( ABSPATH . parse_url( $logo, PHP_URL_PATH ) );
 endif;
 
 ?>
@@ -29,7 +29,7 @@ endif;
 
 	<head>
 
-		<?php if ($google_tag_manager_key): ?>
+		<?php if ( $google_tag_manager_key ) : ?>
 			<!-- Google Tag Manager -->
 			<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 			new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -42,7 +42,7 @@ endif;
 		<meta charset="<?php bloginfo( 'charset' ); ?>">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
 
-		<?php if ($google_maps_api_key): ?>
+		<?php if ( $google_maps_api_key ) : ?>
 			<script>
 				window.gmak = '<?php echo $google_maps_api_key; ?>';
 			</script>
@@ -53,7 +53,7 @@ endif;
 	</head>
 
 	<body <?php body_class(); ?>>
-		<?php if ($google_tag_manager_key): ?>
+		<?php if ( $google_tag_manager_key ) : ?>
 			<!-- Google Tag Manager (noscript) -->
 			<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<?php echo $google_tag_manager_key; ?>"
 			height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -67,53 +67,62 @@ endif;
 			<div class="container-fluid header__container">
 
 				<div class="header__logo">
-					<a href="<?php echo $site_url ?>" title="<?php echo $site_name ?>">
+					<a href="<?php echo $site_url; ?>" title="<?php echo $site_name; ?>">
 						<?php echo $logo_svg_inline; ?>
 					</a>
 				</div>
 
 				<?php
 
-					if ( has_nav_menu( 'primary-desktop' ) ) {
+				if ( has_nav_menu( 'primary-desktop' ) ) {
 
-						wp_nav_menu(
-							array(
-								'theme_location' => 'primary-desktop',
-								'container' => 'div',
-								'container_class'  => 'header__desktop-nav',
-								'container_id'  => 'header__desktop-nav',
-								'walker' => new Desktop_Nav_Walker,
-							)
-						);
+					wp_nav_menu(
+						array(
+							'theme_location'  => 'primary-desktop',
+							'container'       => 'div',
+							'container_class' => 'header__desktop-nav',
+							'container_id'    => 'header__desktop-nav',
+							'walker'          => new Desktop_Nav_Walker,
+						)
+					);
 
-					}
+				}
 
 				?>
 
-				<?php if( is_active_sidebar('widget-header-navigation') ) : ?>		
-					<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('widget-header-navigation') ) : endif; ?>
-				<?php endif;?>
+				<?php if ( is_active_sidebar( 'widget-header-navigation' ) ) : ?>		
+					<?php
+					if ( ! function_exists( 'dynamic_sidebar' ) || ! dynamic_sidebar( 'widget-header-navigation' ) ) :
+endif;
+					?>
+				<?php endif; ?>
 
-				<?php if ( has_nav_menu( 'primary-mobile' ) || is_active_sidebar('widget-mobile-menu-before')  || is_active_sidebar('widget-mobile-menu-after')  ): ?>
+				<?php if ( has_nav_menu( 'primary-mobile' ) || is_active_sidebar( 'widget-mobile-menu-before' ) || is_active_sidebar( 'widget-mobile-menu-after' ) ) : ?>
 
 					<div id="header__mobile-nav" class="header__mobile-nav">
 
-						<?php if( is_active_sidebar('widget-mobile-menu-before') ) : ?>		
-							<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('widget-mobile-menu-before') ) : endif; ?>
-						<?php endif;?>
+						<?php if ( is_active_sidebar( 'widget-mobile-menu-before' ) ) : ?>		
+							<?php
+							if ( ! function_exists( 'dynamic_sidebar' ) || ! dynamic_sidebar( 'widget-mobile-menu-before' ) ) :
+endif;
+							?>
+						<?php endif; ?>
 
 						<?php
 							wp_nav_menu(
 								array(
 									'theme_location' => 'primary-mobile',
-									'walker' => new Mobile_Nav_Walker,
+									'walker'         => new Mobile_Nav_Walker,
 								)
 							);
 						?>
 
-						<?php if( is_active_sidebar('widget-mobile-menu-after') ) : ?>		
-							<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('widget-mobile-menu-after') ) : endif; ?>
-						<?php endif;?>
+						<?php if ( is_active_sidebar( 'widget-mobile-menu-after' ) ) : ?>		
+							<?php
+							if ( ! function_exists( 'dynamic_sidebar' ) || ! dynamic_sidebar( 'widget-mobile-menu-after' ) ) :
+endif;
+							?>
+						<?php endif; ?>
 
 					</div>	
 

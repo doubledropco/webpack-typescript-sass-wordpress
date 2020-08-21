@@ -2,7 +2,7 @@
 
 A Wordpress starter theme powered by Webpack, Typescript, and Sass.
 
-## Usage
+## Developing and Deploying
 
 1. Clone copy the repository into your `wp-content/themes` folder
 2. Install dependencies with `yarn install`
@@ -17,6 +17,40 @@ wp-content
    └── webpack-typescript-sass-wordpress
       ├── acf-json
       └── build
+```
+
+## Tooling
+
+This project comes with some tooling preconfigured for PHP and NodeJS development joy.
+
+### PHP Tools
+
+**PHPUnit** - Any test files following the glob pattern `*.test.php` will be run using PHPUnit. 
+
+
+  ```
+  composer run test
+  ```
+**PHP Code Sniffer** and **PHP Code Beautifier and Fixer** - Lint and fix your code. 
+
+```
+composer run lint
+
+# or
+
+composer run lint:fix
+```
+
+### NodeJS Tools
+
+**Eslint** and **Styelint** - Lint and fix your code
+
+```
+yarn run lint
+
+# or
+
+yarn run lint:fix
 ```
 
 ## Dependencies

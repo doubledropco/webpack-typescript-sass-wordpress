@@ -1,4 +1,5 @@
 build
 node_modules
+vendor
 src/assets
 src/scripts/modernizr.js

@@ -1,0 +1,32 @@
+{
+    "name": "jsakas/webpack-typescript-sass-wordpress",
+    "description": "Wordpress development environment powered by Typescript + Webpack",
+    "type": "wordpresss-theme",
+    "require-dev": {
+        "wp-coding-standards/wpcs": "^2.3",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+        "phpcsstandards/phpcsutils": "^1.0.0-alpha3",
+        "phpcsstandards/phpcsextra": "^1.0.0-alpha3",
+        "phpunit/phpunit": "^8",
+        "php-stubs/wordpress-stubs": "^5.4",
+        "php-stubs/woocommerce-stubs": "^4.3",
+        "squizlabs/php_codesniffer": "^3.5"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jon Sakas",
+            "email": "jon.sakas@gmail.com"
+        }
+    ],
+    "config": {
+        "platform": {
+            "php": "7.2.5"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "lint": "phpcs src",
+        "lint:fix": "phpcbf src"
+    }
+}
