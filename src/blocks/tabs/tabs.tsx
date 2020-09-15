@@ -209,7 +209,7 @@ const TabsEdit: React.FC<TabsEditProps> = (props: TabsEditProps) => {
 			</div>
 			<InnerBlocks
 				allowedBlocks={ALLOWED_BLOCKS}
-				renderAppender={() => null}
+				renderAppender={(): null => null}
 			/>
 		</div>
 	);

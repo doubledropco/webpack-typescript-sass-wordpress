@@ -39,8 +39,11 @@ function theme_support() {
 	// Set content-width.
 	global $content_width;
 	if ( ! isset( $content_width ) ) {
-		$content_width = 580;
+		$content_width = 1170;
 	}
+
+	// Add support for responsive embeds.
+	add_theme_support( 'responsive-embeds' );
 
 	/*
 	 * Enable support for Post Thumbnails on posts and pages.
