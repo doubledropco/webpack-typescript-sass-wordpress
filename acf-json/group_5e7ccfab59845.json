@@ -104,9 +104,7 @@
                 "hamburger--vortex": "hamburger--vortex",
                 "hamburger--vortex-r": "hamburger--vortex-r"
             },
-            "default_value": [
-                "hamburger--3dx"
-            ],
+            "default_value": "hamburger--3dx",
             "allow_null": 0,
             "multiple": 0,
             "ui": 0,
@@ -148,6 +146,76 @@
             "prepend": "",
             "append": "",
             "maxlength": ""
+        },
+        {
+            "key": "field_5f404a5344762",
+            "label": "Google Tag Manager",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5f404a6644763",
+            "label": "Google Tag Manager Key",
+            "name": "google_tag_manager_key",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "GTM-XXXXXXX",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5f404a7e44764",
+            "label": "Facebook",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5f404a9944765",
+            "label": "Facebook App ID",
+            "name": "facebook_app_id",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         }
     ],
     "location": [
@@ -167,5 +235,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1589231035
+    "modified": 1600197127
 }
