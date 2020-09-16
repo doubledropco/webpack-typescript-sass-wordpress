@@ -3,7 +3,7 @@
     "description": "Wordpress development environment powered by Typescript + Webpack",
     "type": "wordpresss-theme",
     "require-dev": {
-        "wp-coding-standards/wpcs": "^2.3",
+        "wp-coding-standards/wpcs": "*",
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
         "phpcsstandards/phpcsutils": "^1.0.0-alpha3",
         "phpcsstandards/phpcsextra": "^1.0.0-alpha3",

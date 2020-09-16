@@ -1,0 +1,75 @@
+name: test
+
+on:
+  push:
+    branches:
+      - "*"
+
+jobs:
+  test-php:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        php-versions: ["7.2", "7.3", "7.4"]
+    name: PHP ${{ matrix.php-versions }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-versions }}
+          tools: composer
+
+      - name: Restore Cache
+        uses: actions/cache@v2
+        with:
+          path: "**/vendor"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/composer.lock') }}
+
+      - name: Install Dependencies
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: composer install
+
+      - name: Lint
+        run: composer run lint
+
+      - name: Test
+        run: composer run test
+
+  test-frontend:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [10, 12, 14]
+    name: Node ${{ matrix.node }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node
+        id: setup-node
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Restore Cache
+        uses: actions/cache@v2
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install Dependencies
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: yarn install
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Build
+        run: yarn build
