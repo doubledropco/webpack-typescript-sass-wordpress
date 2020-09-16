@@ -1,6 +1,6 @@
-# Webpack + Typescript + Sass + Wordpress
+# Webpack + TypeScript + Sass + Wordpress
 
-A Wordpress starter theme powered by Webpack, Typescript, and Sass.
+A Wordpress starter theme powered by Webpack, TypeScript, and Sass.
 
 ## Developing and Deploying
 
@@ -19,7 +19,7 @@ wp-content
       └── build
 ```
 
-## Tooling
+## Tools
 
 This project comes with some tooling preconfigured for PHP and NodeJS development joy.
 
@@ -52,6 +52,12 @@ yarn run lint
 
 yarn run lint:fix
 ```
+
+### Theme Configuration & Colors
+
+For sharing configuration between the backend and frontend, check `src/theme.json`. 
+
+This common file is loaded into the backend and frontend for some easier set up of theme colors in the WP Editor and Sass variables.
 
 ## Dependencies
 
