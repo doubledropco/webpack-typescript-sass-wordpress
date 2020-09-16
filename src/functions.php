@@ -8,6 +8,8 @@
  * @since 1.0.0
  */
 
+require get_template_directory() . '/utils.php';
+
 require get_template_directory() . '/classes/class-post-types.php';
 
 require get_template_directory() . '/classes/class-theme-options.php';
