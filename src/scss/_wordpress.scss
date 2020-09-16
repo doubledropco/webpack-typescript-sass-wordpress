@@ -1,3 +1,15 @@
+@import '../theme.json';
+
+@each $color, $value in $color-map {
+  .has-#{$color}-background-color {
+    background-color: $value;
+  }
+
+  .has-#{$color}-color {
+    color: $value;
+  }
+}
+
 @media screen and (max-width: 600px) {
   #wpadminbar {
     position: fixed;
@@ -22,17 +34,6 @@
   }
 }
 
-$editor-colors: (
-  "teal": $teal,
-  "dark-grey": $dark-grey,
-);
-
-@each $color, $value in $editor-colors {
-  .has-#{$color}-background-color {
-    background-color: $value;
-  }
-
-  .has-#{$color}-color {
-    color: $value;
-  }
+.alignwide {
+  @extend .container-fluid;
 }

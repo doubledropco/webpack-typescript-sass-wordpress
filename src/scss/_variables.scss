@@ -1,11 +1,10 @@
+@import '../theme.json';
+
 $white: #fff;
 $black: #000;
 
-$light-blue: #0073aa;
-$dark-grey: #1c1d21;
-
-$primary: $light-blue;
-$secondary: $dark-grey;
+$primary: map-get($color-map, "theme-color-8");
+$secondary: map-get($color-map, "theme-color-2");
 
 $headings-font-family: 'Helvetica Nueue', 'Arial', sans-serif;
 $font-family-sans-serif: 'Helvetica Nueue', 'Arial', sans-serif;

@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const DependencyExtractionWebpackPlugin = require( '@wordpress/dependency-extraction-webpack-plugin' );
+const jsonImporter = require('node-sass-json-importer');
 
 const { WEBPACK_ENV } = process.env;
 
@@ -56,6 +57,7 @@ module.exports = {
             { from: 'template-parts', to: '../template-parts', context: 'src' },
             { from: 'templates', to: '../templates', context: 'src' },
             { from: '*.php', to: '../.', context: 'src' },
+            { from: 'theme.json', to: '../.', context: 'src' },
             { from: 'screenshot.png', to: '../.', context: 'src' },
             { from: '_style.css', to: '../style.css', context: 'src' },
         ]),
@@ -111,6 +113,9 @@ module.exports = {
                         loader: 'sass-loader',
                         options: {
                             sourceMap: true,
+                            sassOptions: {
+                                importer: jsonImporter(),
+                            }
                         }
                     }
                 ]

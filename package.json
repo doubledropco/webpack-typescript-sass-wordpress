@@ -80,6 +80,7 @@
     "intersection-observer": "^0.10.0",
     "jquery": "^3.5.1",
     "lodash.debounce": "^4.0.8",
+    "node-sass-json-importer": "^4.3.0",
     "normalize.css": "^8.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

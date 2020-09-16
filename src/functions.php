@@ -95,20 +95,28 @@ function theme_support() {
 	add_theme_support( 'customize-selective-refresh-widgets' );
 
 	// Add theme support for custom colors
+	$colors = array();
+	try {
+		$theme  = json_decode( file_get_contents( get_template_directory() . '/theme.json' ), true );
+		$colors = array_map(
+			function ( $k, $v ) {
+				return array(
+					'name'  => $k,
+					'slug'  => $k,
+					'color' => $v,
+				);
+			},
+			array_keys( $theme['color-map'] ),
+			$theme['color-map'],
+		);
+
+	} catch ( Exception $e ) {
+		error_log( $e->getMessage() );
+	}
+
 	add_theme_support(
 		'editor-color-palette',
-		array(
-			array(
-				'name'  => __( 'Teal', 'wordpress-starter' ),
-				'slug'  => 'teal',
-				'color' => '#008e88',
-			),
-			array(
-				'name'  => __( 'Dark Grey', 'wordpress-starter' ),
-				'slug'  => 'dark-grey',
-				'color' => '#1c1d21',
-			),
-		)
+		$colors,
 	);
 }
 
@@ -171,12 +179,6 @@ function wrap_core_blocks( $block_content, $block ) {
 	$block_name      = $block['blockName'];
 	$attrs           = $block['attrs'];
 	$container_class = 'container-fluid';
-
-	if (
-		$wp_query->is_single()
-	) {
-		$container_class = 'container-fluid-sm';
-	}
 
 	if (
 		strpos( $block_name, 'core/column' ) !== false ||
