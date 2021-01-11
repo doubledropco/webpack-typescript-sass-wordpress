@@ -111,7 +111,7 @@ if ( ! function_exists( 'get_page_id' ) ) {
 	 */
 	function get_page_id() {
 		global $post_id, $post, $wp_query;
-		$page_id = $post->ID;
+		$page_id = get_the_ID();
 
 		if ( is_archive() || is_home() ) {
 			$page_id = get_option( 'page_for_posts' );
